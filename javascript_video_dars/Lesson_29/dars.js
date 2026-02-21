@@ -1,10 +1,10 @@
 // function dacloration
-// sayHello()
-// sayHello()
-// sayHello()
-// function sayHello() {
-//     console.log("hello Funcrion decloration")
-// }
+sayHello()
+sayHello()
+sayHello()
+function sayHello() {
+    console.log("hello Funcrion decloration")
+}
 
 
 
@@ -17,15 +17,22 @@
 // SayByeBye() 
 
 
-// // arrow function 
-
-// const nice = () => {
-//     console.log("This is arrow function")
+// const SayByeBye = function () {
+//     console.log("SayByeBye function expression")
 // }
 
-// nice()
-// nice()
-// nice()
+// SayByeBye() 
+
+
+// // arrow function 
+
+const nice = () => {
+    console.log("This is arrow function")
+}
+
+nice()
+nice()
+nice()
 
 
 /* ------------------- lesson-30 ----------------------- */
