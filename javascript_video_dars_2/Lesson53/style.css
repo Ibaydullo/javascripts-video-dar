@@ -75,3 +75,17 @@ button:hover {
   margin-left: auto;
   margin-right: auto;
 }
+
+.success {
+  border: 5px solid greenyellow;
+  box-shadow: 3px 4px 29px 3px rgba(0, 255, 8, 0.71);
+  -webkit-box-shadow: 3px 4px 29px 3px rgba(0, 255, 8, 0.71);
+  -moz-box-shadow: 3px 4px 29px 3px rgba(0, 255, 8, 0.71);
+}
+
+.error {
+  border: 5px solid tomato;
+  box-shadow: 3px 4px 29px 3px rgba(255, 0, 0, 0.71);
+  -webkit-box-shadow: 3px 4px 29px 3px rgba(255, 0, 0, 0.71);
+  -moz-box-shadow: 3px 4px 29px 3px rgba(255, 0, 0, 0.71);
+}
