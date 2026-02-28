@@ -66,3 +66,12 @@ button {
 button:hover {
   background: rgb(21, 21, 217);
 }
+
+
+.message {
+  background: #fff;
+  color: #000;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
