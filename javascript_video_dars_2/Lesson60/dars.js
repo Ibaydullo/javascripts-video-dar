@@ -6,13 +6,42 @@ const movies = [
     {name: 'Avangers',  year: 2012, rating: 6},
 ]
 
-const newMoves = movies.map((move) => {
-    return {name: move.name, year: move.year, rating: move.rating + 1
-    }    
+
+
+const sortedMoves = movies.sort((a,b) => {
+    return a.rating - b.rating   
 })
 
-console.log(newMoves)
-console.log(movies)
+console.log(sortedMoves)
+
+
+// // alphabetical
+
+// const names = ['polonvoy', 'pistonvoy', 'lalan','halain']
+
+// const sortedNames = names.sort()
+// console.log(sortedNames)
+
+
+// // nmbers
+// const numbers = [2,3,66,78,8,7,5,4]
+
+// const sortedNumbers = numbers.sort((a,b) => {
+//     return a - b
+// })
+// console.log(sortedNumbers)
+
+
+
+
+
+// const newMoves = movies.map((move) => {
+//     return {name: move.name, year: move.year, rating: move.rating + 1
+//     }    
+// })
+
+// console.log(newMoves)
+// console.log(movies)
 
 
 
