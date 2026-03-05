@@ -15,6 +15,9 @@ signupForm.addEventListener('submit', (e) => {
         Kiritilayotgan ma'lumot 6 va 12 ta malumot orasida bo'lishi kerak 
         kata va kichik lotin hariflaridan ibortab bo'lishii zarur. 
         Raqamlar ham aralashishi mumkin  `
+        setTimeout(() => {
+            message.textContent = ''
+        }, 3000)
     }
 })
 
