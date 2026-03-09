@@ -9,6 +9,7 @@ const getTodos = (resurse, callback) => {
             } else if (request.readyState === 4) {
                 reject("Malumotni iloji bolmadi !!!",)
             }
+        })
         // OPEN
         request.open('GET', resurse)
 
@@ -18,7 +19,7 @@ const getTodos = (resurse, callback) => {
 }
 
 
-getTodos('totos/todos.json').then((data) =>{
+getTodos('todos/todos.json').then((data) =>{
     console.log(data)
 })
 
