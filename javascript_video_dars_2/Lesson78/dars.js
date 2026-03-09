@@ -21,6 +21,14 @@ const getTodos = (resurse, callback) => {
 
 getTodos('todos/todos.json').then((data) =>{
     console.log(data)
+    return getTodos('todos/todos.json')
+})
+.then((data) => {
+    console.log(data)
+})
+
+.catch((err) => {
+    console.log(err)
 })
 
 
