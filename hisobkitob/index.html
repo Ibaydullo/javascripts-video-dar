@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body class="bg-blend-multiply">
+    <div class="fon">
+        <div class="container max-w-7xl mx-auto px-4 py-8">
+            <h1 class="text-3xl font-bold text-center  text-white">Hisob-kitob</h1>
+            <div class="grid grid-colos-6 grid-rows-3 gap-4">
+                <div
+                    class="col-span-1 col-start-5 row-span-3 justify-center items-center  mb-8 bg-white p-4 rounded-lg shadow-md">
+                    <div id="natija-text" class="justify-center items-center text-center">
+                        <h2 class="text-2xl font-bold mb-5">Natija</h2>
+                        <div id="finalResult" class="flex items-center justify-center text-2xl font-bold">
+                            <p id="resultText" class=" text-2xl font-bold mb-5"></p><span class=" text-2xl font-bold mb-5">$</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="mb-4">
+                        <label for="kirimInput" class="block text-green-600 font-bold mb-2">Kirim</label>
+                        <input type="number" id="kirimInput"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            name="sum" autocomplete="off" placeholder="$ kirim summasini kiriting">
+                        <input type="text" id="kirimInput_text"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
+                            placeholder="sababini yozing">
+                    </div>
+                    <button id="hisoblaBtn"
+                        class="w-full bg-sky-500 hover:bg-green-600 text-white py-2 rounded-lg  transition duration-300 ">Hisobla</button>
+
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="mb-4">
+                        <label for="chiqimInput" class="block text-red-600 font-bold mb-2">Chiqim</label>
+                        <input type="number" id="chiqimInput"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            name="sum" autocomplete="off" placeholder="$ chiqim summasini kiriting">
+                        <input type="text" id="chiqimInput_text"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
+                            placeholder="sababini yozing">
+                    </div>
+                    <button id="hisoblaBtn2"
+                        class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300 hover:bg-red-600">Hisobla</button>
+
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mt-8">
+                <div class="h-40 overflow-y-auto bg-white p-6 rounded-lg shadow-md">
+                    <table class="border-collapse border border-gray-400 w-full text-left text-lg h-40">
+                        <thead>
+                            <tr>
+                                <th class="border border-gray-600">
+                                    <p class="text-green-600 font-bold ml-2 mt-2 mb-2">$ Miqdori</p>
+                                </th>
+                                <th class="border border-gray-600">
+                                    <p class="text-green-600 font-bold ml-2 mt-2 mb-2">Kirim Sababi</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="statistikKirim">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div class="h-40 overflow-y-auto bg-white p-6 rounded-lg shadow-md">
+                    <table class="border-collapse border border-red-400 w-full text-left text-lg h-40">
+                        <thead>
+                            <tr>
+                                <th class="border border-red-600">
+                                    <p class="text-red-600 font-bold ml-2 mt-2 mb-2">$ Miqdori</p>
+                                </th>
+                                <th class="border border-red-600">
+                                    <p class="text-red-600 font-bold ml-2 mt-2 mb-2">Chiqim Sababi</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="statistikChiqim">
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-4">Kirim</h2>
+                <div class="text-gray-700 flex items-center">
+                    <p class="">sumasi</p>
+                    <p class="ml-10">Qayerdan kirim bo'ldi</p>
+                </div>
+                <div id="kirimhaqida">
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-4">Chiqim</h2>
+                <div class="text-gray-700 flex items-center">
+                    <p class="">sumasi</p>
+                    <p class="ml-10 ">Qayerga chiqim bo'ldi
+                    </p>
+                </div>
+                <div id="chiqimhaqida">
+                </div>
+            </div> -->
+            </div>
+
+            <button id="clearBtn"
+                class="w-full bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-800 transition duration-300 mt-8">Tozalash</button>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

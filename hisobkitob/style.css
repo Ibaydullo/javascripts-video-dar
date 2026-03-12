@@ -1,0 +1,19 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url(./imags/network-monitoringjpg-1024x463.jpg);
+    background-size: cover;
+    color: #333;
+    background-attachment: fixed;
+}
+
+.fon {
+    background: rgb(0,0,0,0.5);
+    backdrop-filter: blur(1px);
+}  
+
