@@ -1,5 +1,5 @@
 let carShop = JSON.parse(localStorage.getItem("car-shop"))
-if (span) span.innerText = carShop.length
+if (span) span.innerHTML = carShop.length
 
 if (carShop != null) {
     let selectedCoffees = document.getElementById('selected-coffees')
@@ -9,9 +9,11 @@ if (carShop != null) {
 
 
     function draweBasket() {
-
         let productPrice = 0
         let carShop = JSON.parse(localStorage.getItem("car-shop"))
+        if (selectedCoffees == null) {
+            return;
+        }
         selectedCoffees.innerHTML = ""
         let product = null
         carShop.forEach(item => {
@@ -85,11 +87,75 @@ if (carShop != null) {
             fio,
             manzil,
             nomer,
-            orders:carShop
+            orders: carShop
         }
         localStorage.setItem("orders", JSON.stringify(obj))
         localStorage.setItem("car-shop", JSON.stringify([]))
     }
 
+    let location = document.getElementById("location")
+    location.innerHTML = ""
+    orders.forEach(element => {
+        location.innerHTML += `
+        <div class="space-y-6">
+            <div name="user name" class="flex items-start gap-4">
+                <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#8047F8] text-white">
+                    <i class="fas fa-user"></i>
+                </span>
+                <div>
+                    <p class="text-sm text-[#574F4D]">Entrega para</p>
+                    <p class="text-base font-bold text-[#403937]" id="customer-name">-</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#8047F8] text-white">
+                    <i class="fas fa-map-marker-alt"></i>
+                </span>
+                <div>
+                    <p class="text-sm text-[#574F4D]">Entrega em</p>
+                    <p class="text-base font-bold text-[#403937]" id="delivery-address">
+                        -
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#8047F8] text-white">
+                    <i class="fas fa-phone"></i>
+                </span>
+                <div>
+                    <p class="text-sm text-[#574F4D]">Contato</p>
+                    <p class="text-base font-bold text-[#403937]" id="customer-phone">-</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#DBAC2C] text-white">
+                    <i class="fas fa-clock"></i>
+                </span>
+                <div>
+                    <p class="text-sm text-[#574F4D]">Previsão de entrega</p>
+                    <p class="text-base font-bold text-[#403937]" id="delivery-time">20 min - 30 min</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#C47F17] text-white">
+                    <i class="fas fa-dollar-sign"></i>
+                </span>
+                <div>
+                    <p class="text-sm text-[#574F4D]">Pagamento na entrega</p>
+                    <p class="text-base font-bold text-[#403937]" id="payment-method">Cartão de Crédito
+                    </p>
+                </div>
+            </div>
+        </div>
+        `
+    })
+
 
 }
+
+

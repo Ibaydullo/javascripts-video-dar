@@ -48,6 +48,7 @@ function handleDrawCofeDiv() {
 }
 
 function countCofe(id) {
+
     let carShop = JSON.parse(localStorage.getItem("car-shop")) || [];
     carShop.forEach((item) => {
         let p = document.getElementById(`count${item.cofeId}`);
@@ -86,23 +87,24 @@ function addCofeToStorage(id) {
         carShop.push(obj)
     }
     localStorage.setItem("car-shop", JSON.stringify(carShop))
-    draweBasket();
     countCofe();
-
-    span.innerText = carShop.length
-
+    draweBasket();
+    if (typeof span !== 'undefined') {
+        span.innerHTML = carShop.length;
+    }
+    
 
 }
 
 
 function removeCofeToStorage(id) {
-    let carShop = JSON.parse(localStorage.getItem("car-shop"))
+    let carShop = JSON.parse(localStorage.getItem("car-shop")) || [];
     if (carShop == null) {
         return;
     } else {
         carShop.forEach((item, index) => {
             if (item.cofeId == id) {
-                if (item.count == 1) {
+                if (item.count == 0) {
                     carShop.splice(index, 1)
                     let p = document.getElementById(`count${item.cofeId}`)
                     p.innerText = 0
@@ -110,12 +112,14 @@ function removeCofeToStorage(id) {
                 item.count -= 1
             }
         })
+        countCofe();
+        draweBasket();
+        localStorage.setItem("car-shop", JSON.stringify(carShop))
     }
-    localStorage.setItem("car-shop", JSON.stringify(carShop))
-    draweBasket();
-    countCofe();
-
-    span.innerText = carShop.length
+    
+    if (typeof span !== 'undefined') {
+        span.innerHTML = carShop.length;
+    }
 }
 
 handleDrawCofeDiv()
