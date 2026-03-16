@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>Coffee Shop Car</title>
+</head>
+
+<body class="min-h-screen bg-[#FAFAFA] text-[#272221] font-sans">
+    <header class="bg-[#FAFAFA] text-[#4B2995] p-4 ">
+
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <a href="index.html">
+                <img src="images/Logo.png" alt="Coffee Logo" class="h-10">
+            </a>
+            <nav class="flex items-center gap-3">
+                <button
+                    class="cursor-pointer flex items-center gap-2 bg-[#EBE5F9] text-[#4B2995] py-2 px-4 rounded-lg hover:bg-[#D8C9F2] transition">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="text-sm font-semibold">Location</span>
+                </button>
+                <a href="" name="shopping cart"
+                    class="cursor-pointer relative flex items-center gap-2 bg-[#F1E9C9] text-[#4B2995] py-2 px-4 rounded-lg hover:bg-[#E8D9A1] transition">
+                    <span id="span"
+                        class="absolute -top-2 -right-2 bg-[#C47F17] text-white rounded-full h-5 w-5 flex items-center justify-center text-xs"></span>
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto mt-10 px-4">
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Left: Address + Payment -->
+            <section class="space-y-6">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#E6E5E5]">
+                    <div class="flex items-start gap-3 mb-6">
+                        <span class="text-2xl text-[#C47F17]">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </span>
+                        <div>
+                            <h2 class="text-lg font-bold text-[#403937]">Complete seu pedido</h2>
+                            <p class="text-sm text-[#8D8686]">Informe o endereço onde deseja receber seu pedido</p>
+                        </div>
+                    </div>
+
+                    <form class="space-y-4">
+                        <div>
+                            <input id="fio" type="text" placeholder="F.I.O"
+                                class="w-full h-10 px-3 rounded-md border border-[#E6E5E5] bg-[#F3F2F2] text-sm text-[#574F4D] focus:outline-none focus:ring-2 focus:ring-[#C47F17]" />
+                        </div>
+                        <div>
+                            <input id="manzil" type="text" placeholder="Manzil"
+                                class="w-full h-10 px-3 rounded-md border border-[#E6E5E5] bg-[#F3F2F2] text-sm text-[#574F4D] focus:outline-none focus:ring-2 focus:ring-[#C47F17]" />
+                        </div>
+                        <div>
+                            <input id="nomer" type="text" placeholder="Nomer"
+                                class="w-full h-10 px-3 rounded-md border border-[#E6E5E5] bg-[#F3F2F2] text-sm text-[#574F4D] focus:outline-none focus:ring-2 focus:ring-[#C47F17]" />
+                        </div>
+                        <div class="grid grid-cols-3 gap-3">
+                            <a href="./index.html">
+                                <span onclick="confirmOrder()" 
+                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                    TASDIQLASH
+                                </span>
+                            </a>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#E6E5E5]">
+                    <div class="flex items-start gap-3 mb-6">
+                        <span class="text-2xl text-[#8047F8]">
+                            <i class="fas fa-dollar-sign"></i>
+                        </span>
+                        <div>
+                            <h2 class="text-lg font-bold text-[#403937]">Pagamento</h2>
+                            <p class="text-sm text-[#8D8686]">O pagamento é feito na entrega. Escolha a forma que deseja
+                                pagar</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <button
+                            class="cursor-pointer flex items-center justify-center gap-1 py-4 px-2 rounded-md border border-transparent bg-[#E6E5E5] text-xs text-[#574F4D] hover:bg-[#D7D5D5] transition">
+                            <i class="fas fa-credit-card text-[#8047F8]"></i>
+                            CARTAO DE CREDITO
+                        </button>
+                        <button
+                            class="cursor-pointer flex items-center justify-center gap-1 py-4 px-2 rounded-md border border-transparent bg-[#E6E5E5] text-xs text-[#574F4D] hover:bg-[#D7D5D5] transition">
+                            <i class="fas fa-university text-[#8047F8]"></i>
+                            CARTAO DE DEBITO
+                        </button>
+                        <button
+                            class="cursor-pointer flex items-center justify-center gap-1 py-4 px-2 rounded-md border border-transparent bg-[#E6E5E5] text-xs text-[#574F4D] hover:bg-[#D7D5D5] transition">
+                            <i class="fas fa-money-bill-wave text-[#8047F8]"></i>
+                            DINHEIRO
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right: Selected Coffees -->
+            <section>
+
+                <div class="bg-white rounded-tr-4xl rounded-bl-4xl p-8 shadow-sm border border-[#E6E5E5]">
+                    <h2 class="text-lg font-bold text-[#403937] mb-6">Cafés selecionados</h2>
+
+                    <div id="selected-coffees" class="space-y-4 max-h-80 overflow-y-auto">
+                        <!-- Coffee item -->
+
+                    </div>
+
+                    <div class="mt-6 border-t border-[#E6E5E5] pt-6 space-y-3">
+                        <div class="flex items-center justify-between text-sm text-[#574F4D]">
+                            <span>Cofelar narxi</span>
+                            <span>R$ <span id="product-price">0</span></span>
+
+                        </div>
+                        <div class="flex items-center justify-between text-sm text-[#574F4D]">
+                            <span>Entrega</span>
+                            <span>R$ 350</span>
+                        </div>
+                        <div class="flex items-center justify-between text-lg font-bold text-[#403937]">
+                            <span>TOTAL</span>
+                            <span>R$ <span id="total-price">0</span></span>
+                        </div>
+                    </div>
+
+                    <!-- <button
+                        class="mt-6 w-full py-3 rounded-lg bg-[#DBAC2C] text-white font-bold hover:bg-[#C47F17] transition">
+                        CONFIRMAR PEDIDO
+                    </button> -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="./index.js"></script>
+    <script src="./index2.js"></script>
+
+</body>
+
+</html>
