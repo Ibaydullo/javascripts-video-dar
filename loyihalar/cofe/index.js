@@ -92,7 +92,7 @@ function addCofeToStorage(id) {
     if (typeof span !== 'undefined') {
         span.innerHTML = carShop.length;
     }
-    
+
 
 }
 
@@ -116,7 +116,7 @@ function removeCofeToStorage(id) {
         draweBasket();
         localStorage.setItem("car-shop", JSON.stringify(carShop))
     }
-    
+
     if (typeof span !== 'undefined') {
         span.innerHTML = carShop.length;
     }
@@ -124,4 +124,5 @@ function removeCofeToStorage(id) {
 
 handleDrawCofeDiv()
 countCofe()
+
 

@@ -72,88 +72,32 @@ if (carShop != null) {
 
 
     function confirmOrder() {
+        let Orders = JSON.parse(localStorage.getItem("orders")) || [];
         let fio = document.getElementById("fio").value
         let manzil = document.getElementById("manzil").value
         let nomer = document.getElementById("nomer").value
-        if (fio.length < 3 || manzil.length < 3 || nomer.length < 7) {
-            alert("Iltimos to'liq kiriting")
-        }
         let carShop = JSON.parse(localStorage.getItem("car-shop"))
-        if (carShop == null || carShop.length == 0) {
-            alert("Iltimos maxsulot tanlang!")
+        if (fio.length < 3 || manzil.length < 3 || nomer.length < 7 || carShop == null || carShop.length == 0) {
+            alert("Iltimos to'liq kiriting")
             return;
         }
+        location.replace("./index3.html")
         let obj = {
             fio,
             manzil,
             nomer,
             orders: carShop
         }
-        localStorage.setItem("orders", JSON.stringify(obj))
+        Orders.push(obj)
+        localStorage.setItem("orders", JSON.stringify(Orders))
         localStorage.setItem("car-shop", JSON.stringify([]))
+        locationFul()
+
+
     }
 
-    let location = document.getElementById("location")
-    location.innerHTML = ""
-    orders.forEach(element => {
-        location.innerHTML += `
-        <div class="space-y-6">
-            <div name="user name" class="flex items-start gap-4">
-                <span
-                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#8047F8] text-white">
-                    <i class="fas fa-user"></i>
-                </span>
-                <div>
-                    <p class="text-sm text-[#574F4D]">Entrega para</p>
-                    <p class="text-base font-bold text-[#403937]" id="customer-name">-</p>
-                </div>
-            </div>
-            <div class="flex items-start gap-4">
-                <span
-                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#8047F8] text-white">
-                    <i class="fas fa-map-marker-alt"></i>
-                </span>
-                <div>
-                    <p class="text-sm text-[#574F4D]">Entrega em</p>
-                    <p class="text-base font-bold text-[#403937]" id="delivery-address">
-                        -
-                    </p>
-                </div>
-            </div>
-            <div class="flex items-start gap-4">
-                <span
-                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#8047F8] text-white">
-                    <i class="fas fa-phone"></i>
-                </span>
-                <div>
-                    <p class="text-sm text-[#574F4D]">Contato</p>
-                    <p class="text-base font-bold text-[#403937]" id="customer-phone">-</p>
-                </div>
-            </div>
-            <div class="flex items-start gap-4">
-                <span
-                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#DBAC2C] text-white">
-                    <i class="fas fa-clock"></i>
-                </span>
-                <div>
-                    <p class="text-sm text-[#574F4D]">Previsão de entrega</p>
-                    <p class="text-base font-bold text-[#403937]" id="delivery-time">20 min - 30 min</p>
-                </div>
-            </div>
-            <div class="flex items-start gap-4">
-                <span
-                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#C47F17] text-white">
-                    <i class="fas fa-dollar-sign"></i>
-                </span>
-                <div>
-                    <p class="text-sm text-[#574F4D]">Pagamento na entrega</p>
-                    <p class="text-base font-bold text-[#403937]" id="payment-method">Cartão de Crédito
-                    </p>
-                </div>
-            </div>
-        </div>
-        `
-    })
+
+
 
 
 }
