@@ -97,3 +97,23 @@ if (client) {
 function logaut() {
     window.location.replace("../login/login.html")
 }
+
+
+function getAdmin() {
+    let token = localStorage.getItem("access_token")
+
+    axios({
+        url: api + "/auth/decode",
+        nethod: "GET",
+        headers: { Authorization: token }
+    })
+        .then((res) => {
+            admin = res.data
+            console.log(admin)
+        }).catch((error) => {
+            console.log(error);
+            window.location.replace("../login/login.html")
+
+        })
+}
+getAdmin()

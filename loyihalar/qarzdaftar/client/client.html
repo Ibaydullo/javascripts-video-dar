@@ -38,7 +38,7 @@
                         <span class="ml-3 font-medium">Asosiy sahifa</span>
                         <i class="fas fa-chevron-right ml-auto text-[10px] opacity-0 group-hover:opacity-50"></i>
                     </a>
-                    <a id="admin" href="#"
+                    <a id="admin_sahifa" href="#"
                         class="group flex items-center w-full h-12 px-4 text-blue-200/70 hover:text-white hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-blue-400/50 transition-all duration-300">
                         <i class="fas fa-users-cog w-6 group-hover:text-blue-300 group-hover:scale-110"></i>
                         <span class="ml-3 font-medium">Admin</span>
@@ -70,7 +70,7 @@
                         class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
                     <input id="client_phone" type="tel" name="client_phone" placeholder="Client phone"
                         class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
-                    <input id="client_dabt" type="text" name="client_dabt" placeholder="Client qarzi"
+                    <input id="client_dabt" type="number" name="client_dabt" placeholder="Client qarzi"
                         class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-50０ focus:border-blue-4０ transition-all duration-2００ shadow-lg">
                     <input id="client_payment" type="number" name="client_payment" placeholder="Client payment"
                         class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
@@ -81,37 +81,66 @@
                 </div>
             </div>
 
+
+            <div class="col-span-4 mt-5 mb-5 w-full mr-4 justify-center items-center flex position-absolute hidden"
+                id="modal_debt">
+                <div
+                    class="block w-2/5 gap-4 items-center gap-4 mb-7 p-4 bg-gray-900/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm mr-4">
+                    <h1 id="modal_claentname" class="text-xl font-bold text-white">To'lov qo'shish</h1>
+                    <input id="debt_amount" type="number" name="debt_amount" placeholder="To'lov miqdori"
+                        class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
+                    <input id="debt_reason" type="text" name="debt_reason" placeholder="To'lov sababi"
+                        class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
+
+                    <div class="flex gap-4">
+                        <button onclick="handleSaveClaentDebts()" name="saqlash"
+                            class="bg-green-600 from-green-400 mt-4 w-full to-green-900 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-green-700 hover:to-green-700 hover:shadow-xl transition-all duration-200 font-medium">Saqlash</button>
+                        <button name="cancel" onclick="closeModal()"
+                            class="bg-red-600 from-red-400 mt-4 w-full to-red-900 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-red-700 hover:to-red-700 hover:shadow-xl transition-all duration-200 font-medium">Bekor
+                            qilish</button>
+                    </div>
+                    <div id="error_message_debt" class="w-full text-center text-red-500 mt-2"></div>
+                </div>
+            </div>
+
+            <div class="col-span-4 mt-5 mb-5 w-full mr-4 justify-center items-center flex position-absolute hidden"
+                id="modal_payment">
+                <div
+                    class="block w-2/5 gap-4 items-center gap-4 mb-7 p-4 bg-gray-900/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm mr-4">
+                    <h1 id="payment_claentname" class="text-xl font-bold text-white">To'lov qo'shish</h1>
+                    <input id="payment_amount" type="number" name="debt_amount" placeholder="To'lov miqdori"
+                        class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
+                    <input id="payment_reason" type="text" name="debt_reason" placeholder="To'lov sababi"
+                        class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
+
+                    <div class="flex gap-4">
+                        <button onclick="handleSavePayment()" name="saqlash"
+                            class="bg-green-600 from-green-400 mt-4 w-full to-green-900 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-green-700 hover:to-green-700 hover:shadow-xl transition-all duration-200 font-medium">Saqlash</button>
+                        <button name="cancel" onclick="closeModalPayment()"
+                            class="bg-red-600 from-red-400 mt-4 w-full to-red-900 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-red-700 hover:to-red-700 hover:shadow-xl transition-all duration-200 font-medium">Bekor
+                            qilish</button>
+                    </div>
+                    <div id="error_message_debt" class="w-full text-center text-red-500 mt-2"></div>
+                </div>
+            </div>
+
             <div
                 class="col-span-4  backdrop-blur-xs rounded-3xl shadow-2xl p-6 m-4 h-screen touch-pan-x overflow-auto text-white">
-                <div id="statistic" class="hidden bg-danger-900 w-full overflow-auto max-h-full">
-
-                    <div id="admin_page" class="mt-5 mb-5 w-100% mr-4">
-
-                        <h1 class="text-2xl font-bold mt-10 ml-10 mb-7">Admin Malumotlari</h1>
-                        <table class="w-full table-fixed border-collapse border border-gray-300">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 px-4 py-2">ID</th>
-                                    <th class="border border-gray-300 px-4 py-2">Name</th>
-                                    <th class="border border-gray-300 px-4 py-2">Telefon</th>
-                                    <th class="border border-gray-300 px-4 py-2">Password</th>
-                                    <th class="border border-gray-300 px-4 py-2">Roles</th>
-                                </tr>
-                            </thead>
-                            <tbody id="adminstatistic" class="break-words">
-                            </tbody>
-                        </table>
-                    </div>
-
+                <div id="statistic" class=" bg-danger-900 w-full overflow-auto max-h-full">
                     <div id="client_page" name="clientlar malumotlari" class="mt-5 mb-5 w-100% mr-4">
                         <div
                             class="w-full flex items-center justify-between mb-6 p-4 bg-gradient-to-r from-gray-800/80 to-gray-900/80 rounded-2xl border border-gray-700/50 backdrop-blur-sm shadow-xl">
-                            <h1 class="text-3xl font-bold text-white tracking-wide drop-shadow-lg">Clientlar Malumotlari
+                            <h1 class="text-3xl font-bold text-white tracking-wide drop-shadow-lg">Klientlar Malumotlari
                             </h1>
                             <button onclick="showAddClientForm()"
                                 class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium flex items-center gap-2">
                                 <i class="fas fa-plus"></i>Yangi Client
                             </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <input type="text" id="searchInput" 
+                                placeholder="Klientlarni qidirish nomer yoki ism bilan..."
+                                class="mb-4 w-full px-4 py-3 rounded-xl border border-gray-600/50 bg-gray-800/80 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
                         </div>
                         <table class="w-full table-fixed border-collapse border border-gray-300">
                             <thead>
@@ -123,6 +152,7 @@
                                 </tr>
                             </thead>
                             <tbody id="clentstatistic" class="break-words">
+
                             </tbody>
                         </table>
                     </div>
@@ -132,6 +162,7 @@
         </div>
     </div>
     <script src="./client.js"></script>
+    <script src="../app.js"></script>
 </body>
 
 </html>
