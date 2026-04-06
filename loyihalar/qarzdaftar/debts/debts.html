@@ -19,7 +19,10 @@
 
     <div class=" relative z-10">
         <div class="grid grid-cols-5 gap-4 h-screen fixed w-full">
-            <div class="md:col-span-1 col-span-5  ">
+
+
+
+            <div class="md:col-span-1  col-span-5  ">
                 <div class="md:h-screen bg-[#122669] md:p-4 gap-3 flex md:flex-col md:gap-2 shadow-2xl ">
 
                     <div class="md:px-4 md:py-6 px-3 py-3 md:mb-4 md:border-b border-white/10">
@@ -32,18 +35,21 @@
                         </h1>
                     </div>
 
-                    <a id="admin" href="#"
-                        class="ml-2 text-xs md:text-base group relative md:ml-1 lg:ml-0 flex items-center md:w-full md:h-12 md:px-4 lg:bg-white/10 text-white lg:rounded-xl lg:border-l-4 lg:border-cyan-400 lg:shadow-lg lg:shadow-cyan-500/20 transition-all duration-300">
-                        <span class="hidden md:block"><i
-                                class="fas fa-users-cog  w-6 group-hover:text-blue-300 group-hover:scale-110"></i>
-                        </span>
-                        <span class="md:ml-3 font-medium ">Admin</span>
-                        <div class="hidden md:flex">
-                            <div
-                                class="absolute right-4 w-2 h-2 bg-cyan-400 rounded-full animate-pulse hidden lg:block">
-                            </div>
+
+
+
+
+                    <a onclick="window.location.href='../admins/admin.html'" id="admin" href="#"
+                        class="text-xs md:text-base group flex items-center md:w-full md:h-12 md:px-4 text-blue-200/70 hover:text-white hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-blue-400/50 transition-all duration-300">
+                        <div class="hidden md:block">
+                            <i class="fas fa-users-cog w-6 group-hover:text-blue-300 group-hover:scale-110"></i>
                         </div>
+                        <span class="md:ml-3 font-medium">Admin</span>
+                        <span class="hidden md:block ml-auto text-[10px] opacity-0 group-hover:opacity-50">
+                            <i class="fas fa-chevron-right "></i>
+                        </span>
                     </a>
+
                     <a onclick="window.location.href='../client/client.html'" id="client" href="#"
                         class="text-xs md:text-base group flex items-center md:w-full md:h-12 md:px-4 text-blue-200/70 hover:text-white hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-blue-400/50 transition-all duration-300">
                         <span class="hidden md:block"><i
@@ -54,26 +60,27 @@
                             <i class="fas fa-chevron-right "></i>
                         </span>
                     </a>
-                    <a onclick="window.location.href='../debts/debts.html'" id="debts" href="#"
-                        class="text-xs md:text-base group flex items-center md:w-full md:h-12 md:px-4 text-blue-200/70 hover:text-white hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-blue-400/50 transition-all duration-300">
-                        <span class="hidden md:block"><i
-                                class="fa-solid fa-chart-pie group-hover:text-blue-300 group-hover:scale-110"></i></span>
+                    
+                    <a id="client" href="#"
+                        class="text-xs md:mr-0 md:text-base group relative flex items-center md:w-full md:ml-1 lg:ml-0  md:h-12 md:px-4 lg:bg-white/10 text-white lg:rounded-xl lg:border-l-4 lg:border-cyan-400 lg:shadow-lg shadow-cyan-500/20 lg:transition-all duration-300">
+                        <div class="hidden md:block"><i
+                                class="fa-solid fa-chart-pie group-hover:text-blue-300 group-hover:scale-110"></i></div>
                         <span class="md:ml-3 font-medium">Qarzlar</span>
-                        <span class="hidden md:block ml-auto text-[10px] opacity-0 group-hover:opacity-50">
-                            <i class="fas fa-chevron-right "></i>
-                        </span>
-                    </a>
+                        <div class="hidden md:flex">
+                            <div class="absolute right-4 w-2 h-2 bg-cyan-400 rounded-full animate-pulse hidden lg:block">
+                            </div>
+                        </div>
                     </a>
                     <a onclick="window.location.href='../payments/payment.html'" id="payments" href="#"
                         class="text-xs md:text-base group flex items-center md:w-full md:h-12 md:px-4 text-blue-200/70 hover:text-white hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-blue-400/50 transition-all duration-300">
-                        <span class="hidden md:block"><i
-                                class="fa-solid fa-credit-card group-hover:text-blue-300 group-hover:scale-110"></i></span>
+                        <div class="hidden md:block">
+                            <i class="fa-solid fa-credit-card group-hover:text-blue-300 group-hover:scale-110"></i>
+                        </div>
                         <span class="md:ml-3 font-medium">To'lovlar</span>
                         <span class="hidden md:block ml-auto text-[10px] opacity-0 group-hover:opacity-50">
                             <i class="fas fa-chevron-right "></i>
                         </span>
                     </a>
-
                     <div class="md:mt-auto mt-6 md:pt-4 md:border-t border-white/10">
                         <button onclick="logaut()" class="flex items-center md:w-full md:h-12 md:px-4 
                        text-red-400 hover:text-white hover:bg-red-500/20 
@@ -83,51 +90,47 @@
                         </button>
                     </div>
 
+
                 </div>
             </div>
-            <div
-                class="md:col-span-4 col-span-5  backdrop-blur-xs rounded-3xl shadow-2xl p-6 m-4 text-white">
-                <div id="statistic" class="bg-danger-900  text-xs overflow-auto max-h-full">
-                    <div id="admin_page" class="mt-5 mb-5 w-100% mr-4">
-                        <h1 class="md:text-2xl font-bold mt-10 ml-10 mb-7">Admin Malumotlari</h1>
-                        <div
-                            class="overflow-x-auto w-full mt-4 touch-auto h-auto w-full  touch-pan-x text-xs  overflow-auto">
-                            <table class="w-screen table-fixed border-collapse border border-gray-300">
+            <div class="col-span-5 md:col-span-4  backdrop-blur-xs rounded-3xl shadow-2xl p-2 m-4   mb-40 text-white">
+                <div id="statistic" class=" bg-danger-900  w-full">
+                    <div id="client_page" name="clientlar malumotlari" class="mt-5 mb-5 w-100% mr-4">
+                        <h1 class="text-2xl font-bold md:mt-10 md:ml-10 mb-7">Klient Malumotlari</h1>
+                        <div class="overflow-x-auto">
+                            <input type="text" id="searchInput"
+                                placeholder="Klientlarni qidirish nomer yoki ism bilan..."
+                                class="mb-4 w-full md:px-4 md:py-3 py-2 rounded-xl border border-gray-600/50 bg-gray-800/80 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
+                        </div>
+                        <div class="overflow-x-auto  mt-4 touch-auto h-80  w-full lg:h-120 md:h-100 touch-pan-x  overflow-auto">
+                            <table class="w-screen text-xs table-fixed border-collapse border border-gray-300">
                                 <thead>
                                     <tr>
-                                        <th class="border border-gray-300 md:px-4 md:py-2">ID</th>
-                                        <th class="border border-gray-300 md:px-4 md:py-2">Name</th>
-                                        <th class="border border-gray-300 md:px-4 md:py-2">Telefon</th>
-                                        <th class="border border-gray-300 md:px-4 md:py-2">Password</th>
-                                        <th class="border border-gray-300 md:px-4 md:py-2">Roles</th>
+                                        <th class="border border-gray-300 px-4 py-2 w-20">ID</th>
+                                        <th class="border border-gray-300 px-4 py-2 w-screen md:w-1/5">Name</th>
+                                        <th class="border border-gray-300 px-4 py-2 w-screen md:w-1/5">Client ID</th>
+                                        <th class="border border-gray-300 px-4 py-2 w-screen md:w-1/5">Admin ID</th>
+                                        <th class="border border-gray-300 px-4 py-2 w-screen md:w-1/5">Amount</th>
+                                        <th class="border border-gray-300 px-4 py-2 w-screen md:w-1/5">Description</th>
+                                        <th class="border border-gray-300 px-4 py-2 w-screen md:w-1/5">Date</th>
+                                        <th class="border border-gray-300 px-4 py-2 w-screen md:w-1/5">Soldo</th>
+                                        <th class="border border-gray-300 px-4 py-2 w-screen md:w-1/5">Status</th>
+                                        <th class="border border-gray-300 px-4 py-2 w-screen md:w-1/5">Telephone</th>
                                     </tr>
                                 </thead>
-                                <tbody id="adminstatistic" class="break-words">
+                                <tbody id="debtsTableBody" class="break-words">
+
                                 </tbody>
                             </table>
                         </div>
-                        <!-- <table class="w-full table-fixed border-collapse border border-gray-300 ">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 md:px-4 md:py-2">ID</th>
-                                    <th class="border border-gray-300 md:px-4 md:py-2">Name</th>
-                                    <th class="border border-gray-300 md:px-4 md:py-2">Telefon</th>
-                                    <th class="border border-gray-300 md:px-4 md:py-2">Password</th>
-                                    <th class="border border-gray-300 md:px-4 md:py-2">Roles</th>
-                                </tr>
-                            </thead>
-                            <tbody id="adminstatistic" class="break-words">
-                            </tbody>
-                        </table> -->
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-    <script src="./admin.js"></script>
+    <script src="./debts.js"></script>
     <script src="../app.js"></script>
-
 </body>
 
 </html>

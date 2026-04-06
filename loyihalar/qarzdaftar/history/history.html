@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qarzdaftar</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body class="bg-[url('../imgs/background.jpg')]  bg-repeat bg-scroll bg-scroll bg-cover bg-no-repeat relative">
+    <div class="fixed w-full inset-0 pointer-events-none"></div>
+
+    <div class="flex w-full p-4  h-screen">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full ">
+            <div class="flex items-center justify-between mb-6">
+                <a onclick="window.location.href='../client/client.html'"
+                    class="cursor-pointer flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Orqaga</span>
+                </a>
+                <h1 class="text-2xl font-bold text-center flex-1">Qarzdaftar va To'lovlar Tarixi</h1>
+                <div class="w-24"></div>
+            </div>
+            <div id="umumiySoldoVaAmount" class="mb-6">
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <div
+                        class="rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-blue-100 p-4 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-semibold text-blue-700">Umumiy Soldo</span>
+                            <i class="fas fa-wallet text-blue-500"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-blue-600">
+                            <span id="totalBalance">0</span><span class="text-base font-medium text-slate-500">
+                                so'm</span>
+                        </div>
+                    </div>
+                    <div
+                        class="rounded-3xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-emerald-100 p-4 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-semibold text-emerald-700">Umumiy To'lovlar</span>
+                            <i class="fas fa-hand-holding-dollar text-emerald-500"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-emerald-600">
+                            <span id="totalPayments">0</span><span class="text-base font-medium text-slate-500">
+                                so'm</span>
+                        </div>
+                    </div>
+                    <div
+                        class="rounded-3xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-rose-100 p-4 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-semibold text-rose-700">Qolgan Qarz</span>
+                            <i class="fas fa-credit-card text-rose-500"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-rose-600">
+                            <span id="totalDebts">0</span><span class="text-base font-medium text-slate-500">
+                                so'm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:flex gap-4 mb-6">
+                <div class="w-full lg:w-1/2 mb-4 lg:mb-0">
+                    <div
+                        class=" w-full touch-auto overflow-auto  max-h-[calc(100vh-220px)] lg:max-h-115 border border-gray-200 bg-slate-50 shadow-sm">
+                        <table
+                            class=" w-screen touch-auto overflow-auto w-full table-fixed bg-white shadow-md overflow-hidden break-words">
+                            <thead class="bg-slate-100 ">
+                                <tr>
+                                    <th
+                                        class="py-2 px-2 w-5 border border-gray-500 text-left text-sm font-semibold text-slate-600 whitespace-nowrap">
+                                        ID</th>
+                                    <th
+                                        class="py-2 px-2 w-10 border border-gray-500 text-left text-sm font-semibold text-slate-600 whitespace-normal">
+                                        Mijoz Ismi</th>
+                                    <th
+                                        class="py-2 px-2 w-10 border border-gray-500 text-left text-sm font-semibold text-slate-600 whitespace-normal">
+                                        Qarz bergan admin Ismi</th>
+                                    <th
+                                        class="py-2 px-2 w-10 border border-gray-500 text-left text-sm font-semibold text-slate-600 whitespace-normal">
+                                        Qarz History Miqdori</th>
+                                    <th
+                                        class="py-2 px-2 w-10 border border-gray-500 text-left text-sm font-semibold text-slate-600 whitespace-normal">
+                                        Qarz berilgan sana</th>
+                                </tr>
+                            </thead>
+                            <tbody id="debtHistoryTable"
+                                class="divide-y divide-slate-200 text-sm text-slate-700 break-words">
+                                <!-- Qarz tarix ma'lumotlari bu yerga qo'shiladi -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 mb-4 lg:mb-0">
+                    <div
+                        class=" w-full touch-auto overflow-auto  max-h-[calc(100vh-220px)] lg:max-h-115 border border-gray-200 bg-slate-50 shadow-sm">
+                        <table
+                            class=" w-screen touch-auto overflow-auto w-full table-fixed bg-white shadow-md overflow-hidden break-words">
+                            <thead class="bg-slate-100 ">
+                                <tr>
+                                    <th
+                                        class="py-2 px-2 w-10  border border-gray-500 text-left text-sm font-semibold text-slate-600 whitespace-nowrap">
+                                        ID</th>
+                                    <th
+                                        class="py-2 px-2 w-10 border border-gray-500 text-left text-sm font-semibold text-slate-600 whitespace-normal">
+                                        Mijoz Ismi</th>
+                                    <th
+                                        class="py-2 px-2 w-10 border border-gray-500 text-left text-sm font-semibold text-slate-600 whitespace-normal">
+                                        To'lov qilingan admin Ismi</th>
+                                    <th
+                                        class="py-2 px-2 w-10 border border-gray-500 text-left text-sm font-semibold text-slate-600 whitespace-normal">
+                                        To'lov Miqdori</th>
+                                    <th
+                                        class="py-2 px-2 w-10 border border-gray-500 text-left text-sm font-semibold text-slate-600 whitespace-normal">
+                                        To'lov sana</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentsHistoryTable"
+                                class="divide-y divide-slate-200 text-sm text-slate-700 break-words">
+                                <!-- To'lov tarix ma'lumotlari bu yerga qo'shiladi -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./history.js"></script>
+    <script src="../app.js"></script>
+</body>
+
+</html>

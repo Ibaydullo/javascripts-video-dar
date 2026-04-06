@@ -1,11 +1,8 @@
 const api = "http://87.192.233.178:49304/api/v1"
 let clentsStatistic = document.getElementById("clentstatistic")
-let adminStatistic = document.getElementById("adminstatistic")
-let home = document.getElementById("home")
 let client = document.getElementById("client")
 let statistic = document.getElementById("statistic")
 let client_form = document.getElementById("client_form")
-let admin_sahifa = document.getElementById("admin_sahifa")
 let admin = null
 let modalDebt = document.getElementById("modal_debt")
 
@@ -25,7 +22,7 @@ function getAdmin() {
 
     axios({
         url: api + "/auth/decode",
-        nethod: "GET",
+        method: "GET",
         headers: { Authorization: token }
     })
         .then((res) => {
@@ -38,6 +35,7 @@ function getAdmin() {
         })
 }
 getAdmin()
+
 
 function addClient() {
     if (admin == null) {
@@ -75,7 +73,6 @@ function addClient() {
             .catch((err) => {
                 console.log("Xatolik:", err)
             })
-
         statistic.classList.remove("hidden")
         client_form.classList.add("hidden")
     }
@@ -83,39 +80,20 @@ function addClient() {
         error_message.innerText = "Malumot t'g'ri kiriting"
         setTimeout(() => {
             error_message.innerText = ""
-        }, 3000)
+        }, 5000)
     }
 }
 
-
-
-function getUsers() {
+function closePageModal() {
     statistic.classList.remove("hidden")
-    let response = axios.get(`${api}/admin`)
-        .then((response) => {
-            console.log(response.data)
-            adminStatistic.innerHTML = ""
-            response.data.forEach((element, index) => {
-                element.roles.forEach(i => {
-                    adminStatistic.innerHTML += `
-                        <tr class="border border-gray-300 break-all">
-                            <td class="border-1 border-gray-300 px-4 py-2">${index + 1}</td>
-                            <td class="border-1 border-gray-300 px-4 py-2">${element.username}</td>
-                            <td class="border-1 border-gray-300 px-4 py-2">${element.phone}</td>
-                            <td class="border-1 border-gray-300 px-4 py-2">${element.password}</td>
-                            <td class="border-1 border-gray-300 px-4 py-2">${i.name}</td>
-                        </tr>
-                    `
-                    console.log(element)
-                });
-            });
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-
+    client_form.classList.add("hidden")
+    document.getElementById("error_message").innerHTML = ""
+    document.getElementById("client_name").value = ""
+    document.getElementById("client_phone").value = ""
+    document.getElementById("client_dabt").value = ""
+    document.getElementById("client_payment").value = ""
 }
+
 
 
 let searchInput = document.getElementById("searchInput")
@@ -129,14 +107,14 @@ searchInput.addEventListener("keyup", (e) => {
                 element.name.toLowerCase().includes(e.target.value) && (
                     clentsStatistic.innerHTML += `
                 <tr class="border border-gray-300 break-all">
-                    <td class="border-1 border-gray-300 px-4 py-2">${index + 1}</td>
-                    <td class="border-1 border-gray-300 px-4 py-2">${element.name}</td>
-                    <td class="border-1 border-gray-300 px-4 py-2">${element.phone}</td>
-                    <td class="border-1 border-gray-300 px-4 py-2">${element.createdAt}</td>
+                <td class="border-1 border-gray-300 px-4 py-2 w-screen "><p onclick="OpenHistory('${element.id}')" class="cursor-pointer">${element.name}</p></td>
+                <td class="border-1 border-gray-300 px-4 py-2 w-screen ">${index + 1}</td>
+                    <td class="border-1 border-gray-300 px-4  w-screen py-2">${element.phone}</td>
+                    <td class="border-1 border-gray-300 px-4  w-screen py-2">${element.createdAt}</td>
                     <td class="border border-gray-300 px-4 py-5 gap-5 flex">
-                        <button onclick="openMoodalDebt('${element.name}', '${element.id}')" class="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600 transition"><i class="fa-solid fa-pen-to-square"></i></button>
-                        <button onclick="openMoodalPayment('${element.name}', '${element.id}')"  class="bg-green-500 text-white px-3 py-1 rounded-lg shadow hover:bg-green-600 transition"><i class="fa-regular fa-credit-card"></i></button>
-                        <button onclick="deleteClient('${element.id}')" class="bg-red-500 text-white px-3 py-1 rounded-lg shadow hover:bg-red-600 transition"><i class="fa-solid fa-trash-can"></i></button>
+                        <button onclick="openMoodalDebt('${element.name}', '${element.id}')" class="bg-blue-500           w-screen    text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600 transition"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="openMoodalPayment('${element.name}', '${element.id}')"  class="bg-green-500      w-screen   text-white px-3 py-1 rounded-lg shadow hover:bg-green-600 transition"><i class="fa-regular fa-credit-card"></i></button>
+                        <button onclick="deleteClient('${element.id}')" class="bg-red-500 text-white px-3 py-1 rounded-lg w-screen shadow hover:bg-red-600 transition"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
                 </tr>
             `)
@@ -151,22 +129,22 @@ searchInput.addEventListener("keyup", (e) => {
 
 
 
-function getClients(search) {
-    console.log(search)
+function getClients() {
     statistic.classList.remove("hidden")
     let response = axios.get(`${api}/client`)
         .then((response) => {
             clentsStatistic.innerHTML = ""
+            console.log(response.data);
             response.data.forEach((element, index) => {
-                    clentsStatistic.innerHTML += `
+                clentsStatistic.innerHTML += `
                 <tr class="border border-gray-300 break-all">
-                    <td class="border-1 border-gray-300 px-4 py-2">${index + 1}</td>
-                    <td class="border-1 border-gray-300 px-4 py-2">${element.name}</td>
-                    <td class="border-1 border-gray-300 px-4 py-2">${element.phone}</td>
-                    <td class="border-1 border-gray-300 px-4 py-2">${element.createdAt}</td>
-                    <td class="border border-gray-300 px-4 py-5 gap-5 flex">
+                    <td class="border-1 border-gray-300 lg:px-4 lg:py-2 md:p-2 p-2 w-screen">${index + 1}</td>
+                    <td class="border-1 border-gray-300 lg:px-4 lg:py-2 md:p-2 p-2 w-screen"><p onclick="OpenHistory('${element.id}')" class="cursor-pointer">${element.name}</p></td>
+                    <td class="border-1 border-gray-300 lg:px-4 lg:py-2 md:p-2 p-2 w-screen">${element.phone}</td>
+                    <td class="border-1 border-gray-300 lg:px-4 lg:py-2 md:p-2 p-2 w-screen">${element.createdAt}</td>
+                    <td class="border border-gray-300 lg:px-4 lg:py-5  p-5 gap-2 lg:gap-5 w-screen md:w-auto justify-center items-center flex">
                         <button onclick="openMoodalDebt('${element.name}', '${element.id}')" class="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600 transition"><i class="fa-solid fa-pen-to-square"></i></button>
-                        <button onclick="openMoodalPayment('${element.name}', '${element.id}')"  class="bg-green-500 text-white px-3 py-1 rounded-lg shadow hover:bg-green-600 transition"><i class="fa-regular fa-credit-card"></i></button>
+                        <button onclick="openMoodalPayment('${element.name}', '${element.id}')"  class="bg-green-500 text-white px-3 py-1  rounded-lg shadow hover:bg-green-600 transition"><i class="fa-regular fa-credit-card"></i></button>
                         <button onclick="deleteClient('${element.id}')" class="bg-red-500 text-white px-3 py-1 rounded-lg shadow hover:bg-red-600 transition"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
                 </tr>
@@ -179,25 +157,15 @@ function getClients(search) {
 }
 getClients();
 
-if (home) {
-    home.addEventListener("click", (e) => {
-        e.preventDefault();
-        getUsers();
-        getClients();
-        users.classList.remove('hidden');
-        clients.classList.remove('hidden');
 
-    });
+function OpenHistory(e) {
+    localStorage.setItem("historyklentid", e)
+    window.location.href = ('../history/history.html')
 }
 
-if (client) {
-    client.addEventListener("click", (e) => {
-        e.preventDefault();
-        getClients();
-        users.classList.add('hidden');
-        clients.classList.remove('hidden');
-    });
-}
+
+
+
 
 
 function deleteClient(clientId) {
@@ -254,14 +222,20 @@ function handleSaveClaentDebts() {
             description: description,
         }
 
+        console.log(obj);
+        console.log(api + "/debts");
+
+
         axios({
             url: api + "/debts",
-            nethod: "POST",
+            method: "POST",
             data: obj
         })
             .then((res) => {
-                alert("Zo'r bir odamni tiqting")
+                alert(res.data)
                 closeModal()
+                amount = ""
+                description = ""
             }).catch((error) => {
                 alert("Oxshmadi")
 
@@ -305,13 +279,15 @@ function handleSavePayment() {
 
     let res = axios({
         url: api + "/payment",
-        nethod: "POST",
+        method: "POST",
         data: obj
     })
         .then((res) => {
             alert("Qarz tolovi")
             closeModal()
             closeModalPayment()
+            amount = ""
+            description = ""
         }).catch((error) => {
             alert("Oxshmadi")
 
@@ -326,8 +302,8 @@ function closeModalPayment() {
     document.getElementById("payment_claentname").innerText = "";
     statistic.classList.remove("hidden");
     document.getElementById("modal_payment").classList.add("hidden");
-    document.getElementById("payment_amount").innerText = "";
-    document.getElementById("payment_reason").innerText = "";
+    document.getElementById("payment_amount").value = "";
+    document.getElementById("payment_reason").value = "";
 
 }
 

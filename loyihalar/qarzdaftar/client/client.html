@@ -18,54 +18,77 @@
     <div class="fixed inset-0 bg-black/40 pointer-events-none"></div>
 
     <div class=" relative z-10">
-        <div class="grid grid-cols-5  h-screen fixed w-full">
-            <div class="col-span-1  ">
-                <div class="w-72 h-screen bg-[#122669] p-4 flex flex-col gap-2 shadow-2xl">
+        <div class="grid grid-cols-5 gap-4 h-screen fixed w-full">
 
-                    <div class="px-4 py-6 mb-4 border-b border-white/10">
-                        <h1 class="text-white text-xl font-bold tracking-wider flex items-center">
+            <div class="md:col-span-1  col-span-5  ">
+                <div class="md:h-screen bg-[#122669] md:p-4 gap-3 flex md:flex-col md:gap-2 shadow-2xl ">
+
+                    <div class="md:px-4 md:py-6 px-3 py-3 md:mb-4 md:border-b border-white/10">
+                        <h1
+                            class="text-white md:text-lg lg:text-xl font-bold tracking-wider md:block  lg:flex items-center">
                             <span
-                                class="w-12 h-12 rounded-lg mr-3 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+                                class="md:w-12 md:h-12  w-7 h-7 rounded-lg mt-2 md:mt-0 md:mr-3 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.5)]">
                                 <img src="../imgs/logo.png" alt="Logo">
                             </span>
-                            ADMIN PANEL
                         </h1>
                     </div>
 
-                    <a id="home" href="#"
-                        class="group flex items-center w-full h-12 px-4 text-blue-200/70 hover:text-white hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-blue-400/50 transition-all duration-300">
-                        <i class="fas fa-home w-6 text-cyan-400 group-hover:scale-110"></i>
-                        <span class="ml-3 font-medium">Asosiy sahifa</span>
-                        <i class="fas fa-chevron-right ml-auto text-[10px] opacity-0 group-hover:opacity-50"></i>
+                    <a onclick="window.location.href='../admins/admin.html'" id="admin" href="#"
+                        class="text-xs md:text-base group flex items-center md:w-full md:h-12 md:px-4 text-blue-200/70 hover:text-white hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-blue-400/50 transition-all duration-300">
+                        <div class="hidden md:block">
+                            <i class="fas fa-users-cog w-6 group-hover:text-blue-300 group-hover:scale-110"></i>
+                        </div>
+                        <span class="md:ml-3 font-medium">Admin</span>
+                        <span class="hidden md:block ml-auto text-[10px] opacity-0 group-hover:opacity-50">
+                            <i class="fas fa-chevron-right "></i>
+                        </span>
                     </a>
-                    <a id="admin_sahifa" href="#"
-                        class="group flex items-center w-full h-12 px-4 text-blue-200/70 hover:text-white hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-blue-400/50 transition-all duration-300">
-                        <i class="fas fa-users-cog w-6 group-hover:text-blue-300 group-hover:scale-110"></i>
-                        <span class="ml-3 font-medium">Admin</span>
-                        <i class="fas fa-chevron-right ml-auto text-[10px] opacity-0 group-hover:opacity-50"></i>
-                    </a>
-
                     <a id="client" href="#"
-                        class="group relative flex items-center w-full h-12 px-4 bg-white/10 text-white rounded-xl border-l-4 border-cyan-400 shadow-lg shadow-cyan-500/20 transition-all duration-300">
-                        <i class="fas fa-users w-6 group-hover:text-blue-300 group-hover:scale-110"></i>
-                        <span class="ml-3 font-medium">Clientlar</span>
-                        <div class="absolute right-4 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                        class="text-xs md:mr-0 md:text-base group relative flex items-center md:w-full md:ml-1 lg:ml-0  md:h-12 md:px-4 lg:bg-white/10 text-white lg:rounded-xl lg:border-l-4 lg:border-cyan-400 lg:shadow-lg shadow-cyan-500/20 lg:transition-all duration-300">
+                        <div class="hidden md:block">
+                            <i class="fas fa-users md:w-6 group-hover:text-blue-300 group-hover:scale-110 "></i>
+                        </div>
+                        <span class="md:ml-3 font-medium">Klientlar</span>
+                        <div class="hidden md:flex">
+                            <div class="absolute right-4 w-2 h-2 bg-cyan-400 rounded-full animate-pulse hidden lg:block">
+                            </div>
+                        </div>
                     </a>
-                    <div class="mt-auto pt-4 border-t border-white/10">
-                        <button onclick="logaut()" class="flex items-center w-full h-12 px-4 
+                    <a onclick="window.location.href='../debts/debts.html'" id="debts" href="#"
+                        class="text-xs md:text-base  group flex items-center md:w-full md:h-12 md:px-4 text-blue-200/70 hover:text-white hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-blue-400/50 transition-all duration-300">
+                        <div class="hidden md:block">
+                            <i class="fa-solid fa-chart-pie group-hover:text-blue-300 group-hover:scale-110"></i>
+                        </div>
+                        <span class="md:ml-3  font-medium">Qarzlar</span>
+                        <span class="hidden md:block ml-auto text-[10px] opacity-0 group-hover:opacity-50">
+                            <i class="fas fa-chevron-right "></i>
+                        </span>
+                    </a>
+                    <a onclick="window.location.href='../payments/payment.html'" id="payments" href="#"
+                        class="text-xs md:text-base group flex items-center md:w-full md:h-12 md:px-4 text-blue-200/70 hover:text-white hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-blue-400/50 transition-all duration-300">
+                        <div class="hidden md:block">
+                            <i class="fa-solid fa-credit-card group-hover:text-blue-300 group-hover:scale-110"></i>
+                        </div>
+                        <span class="md:ml-3 font-medium">To'lovlar</span>
+                        <span class="hidden md:block ml-auto text-[10px] opacity-0 group-hover:opacity-50">
+                            <i class="fas fa-chevron-right "></i>
+                        </span>
+                    </a>
+                    <div class="md:mt-auto mt-6 md:pt-4 md:border-t border-white/10">
+                        <button onclick="logaut()" class="flex items-center md:w-full md:h-12 md:px-4 
                        text-red-400 hover:text-white hover:bg-red-500/20 
                        rounded-xl transition-all duration-300">
                             <i class="fas fa-sign-out-alt w-6"></i>
-                            <span class="ml-3 font-medium">Chiqish</span>
+                            <span class="ml-3 font-medium hidden md:block">Chiqish</span>
                         </button>
                     </div>
 
                 </div>
             </div>
-            <div class="col-span-4 mt-5 mb-5 w-full mr-4 justify-center items-center flex position-absolute hidden"
+            <div class="md:col-span-4 col-span-5 mt-5 mb-5 w-full mr-4 justify-center items-center flex position-absolute hidden"
                 id="client_form">
                 <div
-                    class="block w-3/6 gap-4 items-center gap-4 mb-7 p-4 bg-gray-900/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm mr-4">
+                    class="block md:w-4/5 lg:w-3/6 gap-4 items-center gap-4 mb-7 p-4 bg-gray-900/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm mr-4">
                     <input id="client_name" type="text" name="client_name" placeholder="Client name"
                         class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
                     <input id="client_phone" type="tel" name="client_phone" placeholder="Client phone"
@@ -74,22 +97,31 @@
                         class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-50０ focus:border-blue-4０ transition-all duration-2００ shadow-lg">
                     <input id="client_payment" type="number" name="client_payment" placeholder="Client payment"
                         class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
-                    <button onclick="addClient()"
-                        class="bg-green-600 from-green-400 mt-4 w-full to-green-900 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-green-700 hover:to-green-700 hover:shadow-xl transition-all duration-200 font-medium">Klient
-                        qo'shish</button>
+                    <div class="flex gap-4">
+                        <button onclick="addClient()"
+                            class="bg-green-600 from-green-400 mt-4 w-full to-green-900 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-green-700 hover:to-green-700 hover:shadow-xl transition-all duration-200 font-medium">Klient
+                            qo'shish</button>
+                        <button name="cancel" onclick="closePageModal()"
+                            class="bg-red-600 from-red-400 mt-4 w-full to-red-900 text-white   px-6 py-3 rounded-xl shadow-lg hover:bg-red-700 hover:to-red-700 hover:shadow-xl transition-all duration-200 font-medium">Bekor
+                            qilish</button>
+                    </div>
                     <div id="error_message" class="w-full text-center text-red-500 mt-2"></div>
                 </div>
             </div>
 
 
-            <div class="col-span-4 mt-5 mb-5 w-full mr-4 justify-center items-center flex position-absolute hidden"
+
+
+
+
+            <div class="md:col-span-4 col-span-5 mt-5 mb-5 w-full mr-4 justify-center items-center flex position-absolute hidden"
                 id="modal_debt">
                 <div
-                    class="block w-2/5 gap-4 items-center gap-4 mb-7 p-4 bg-gray-900/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm mr-4">
-                    <h1 id="modal_claentname" class="text-xl font-bold text-white">To'lov qo'shish</h1>
-                    <input id="debt_amount" type="number" name="debt_amount" placeholder="To'lov miqdori"
+                    class="block md:w-4/5 lg:w-2/5 gap-4 items-center gap-4 mb-7 p-4 bg-gray-900/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm mr-4">
+                    <h1 id="modal_claentname" class="text-xl font-bold text-white">Qarz qo'shish</h1>
+                    <input id="debt_amount" type="number" name="debt_amount" placeholder="Qarz miqdori"
                         class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
-                    <input id="debt_reason" type="text" name="debt_reason" placeholder="To'lov sababi"
+                    <input id="debt_reason" type="text" name="debt_reason" placeholder="Qarz sababi"
                         class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
 
                     <div class="flex gap-4">
@@ -103,10 +135,10 @@
                 </div>
             </div>
 
-            <div class="col-span-4 mt-5 mb-5 w-full mr-4 justify-center items-center flex position-absolute hidden"
+            <div class="md:col-span-4 col-span-5 mt-5 mb-5 w-full mr-4 justify-center items-center flex position-absolute hidden"
                 id="modal_payment">
                 <div
-                    class="block w-2/5 gap-4 items-center gap-4 mb-7 p-4 bg-gray-900/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm mr-4">
+                    class="block md:w-4/5 lg:w-2/5 gap-4 items-center gap-4 mb-7 p-4 bg-gray-900/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm mr-4">
                     <h1 id="payment_claentname" class="text-xl font-bold text-white">To'lov qo'shish</h1>
                     <input id="payment_amount" type="number" name="debt_amount" placeholder="To'lov miqdori"
                         class="block mt-4 w-full bg-gray-800/80 text-white placeholder:text-gray-400 border border-gray-600/50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
@@ -124,37 +156,59 @@
                 </div>
             </div>
 
-            <div
-                class="col-span-4  backdrop-blur-xs rounded-3xl shadow-2xl p-6 m-4 h-screen touch-pan-x overflow-auto text-white">
-                <div id="statistic" class=" bg-danger-900 w-full overflow-auto max-h-full">
+            <div class="md:col-span-4 col-span-5 backdrop-blur-xs rounded-3xl shadow-2xl p-6 m-4 text-white">
+                <div id="statistic" class="bg-danger-900   text-xs ">
                     <div id="client_page" name="clientlar malumotlari" class="mt-5 mb-5 w-100% mr-4">
                         <div
-                            class="w-full flex items-center justify-between mb-6 p-4 bg-gradient-to-r from-gray-800/80 to-gray-900/80 rounded-2xl border border-gray-700/50 backdrop-blur-sm shadow-xl">
-                            <h1 class="text-3xl font-bold text-white tracking-wide drop-shadow-lg">Klientlar Malumotlari
+                            class="w-full md:flex  items-center justify-between mb-6 p-4 bg-gradient-to-r from-gray-800/80 to-gray-900/80 rounded-2xl border border-gray-700/50 backdrop-blur-sm shadow-xl">
+                            <h1 class="lg:text-3xl md:text-xl font-bold mb-2 text-white tracking-wide drop-shadow-lg">
+                                Klientlar
+                                Malumotlari
                             </h1>
                             <button onclick="showAddClientForm()"
-                                class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium flex items-center gap-2">
+                                class="bg-gradient-to-r  md:p-2 w-full md:w-auto from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium flex items-center gap-2">
                                 <i class="fas fa-plus"></i>Yangi Client
                             </button>
                         </div>
                         <div class="overflow-x-auto">
-                            <input type="text" id="searchInput" 
+                            <input type="text" id="searchInput"
                                 placeholder="Klientlarni qidirish nomer yoki ism bilan..."
-                                class="mb-4 w-full px-4 py-3 rounded-xl border border-gray-600/50 bg-gray-800/80 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
+                                class="mb-4 md:p-2 w-full px-4 py-3 rounded-xl border border-gray-600/50 bg-gray-800/80 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all duration-200 shadow-lg">
                         </div>
-                        <table class="w-full table-fixed border-collapse border border-gray-300">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 px-4 py-2">ID</th>
-                                    <th class="border border-gray-300 px-4 py-2">Name</th>
-                                    <th class="border border-gray-300 px-4 py-2">Telefon</th>
-                                    <th class="border border-gray-300 px-4 py-2">Created At</th>
-                                </tr>
-                            </thead>
-                            <tbody id="clentstatistic" class="break-words">
+                        <div class="overflow-x-auto  mt-4 touch-auto h-screen w-full touch-pan-x lg:h-120 md:h-100 overflow-auto">
+                            <table class="lg:w-full md:w-screen  table-fixed border-collapse border border-gray-300">
+                                <thead class="w-screen">
+                                    <tr>
+                                        <th class="border border-gray-300 px-4 py-2 md:w-auto w-10">ID</th>
+                                        <th class="border border-gray-300 px-4 py-2 md:w-auto w-screen">Name</th>
+                                        <th class="border border-gray-300 px-4 py-2 md:w-auto w-screen">Client Phone
+                                        </th>
+                                        <th class="border border-gray-300 px-4 py-2 md:w-auto w-screen">Admin ID</th>
+                                        <th class="border border-gray-300 px-4 py-2 md:w-auto w-screen">Tahrirlash</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clentstatistic" class="break-words w-screen">
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <div
+                            class="overflow-x-auto md:h-100  lg:h-120 mt-4 touch-auto w-full ">
+                            <table
+                                class="lg:w-full md:w-screen table-fixed border-collapse h-full border border-gray-300">
+                                <thead>
+                                    <tr>
+                                        <th class="border border-gray-300 md:px-4 md:py-2">ID</th>
+                                        <th class="border border-gray-300 md:px-4 md:py-2">Name</th>
+                                        <th class="border border-gray-300 md:px-4 md:py-2">Telefon</th>
+                                        <th class="border border-gray-300 md:px-4 md:py-2">Created At</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clentstatistic" class="break-words ">
+
+                                </tbody>
+                            </table>
+                        </div> -->
                     </div>
                 </div>
 
